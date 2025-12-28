@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bainakarov | Создание видеоигр, визуализация интерьеров, приложения и сайты</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2a2d7c;
+            --secondary: #ff6b35;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+
+        body {
+            background-color: #f5f7ff;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a1a2e);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 40px;
+            text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Услуги с портфолио */
+        .services-portfolio {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-media {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background-color: #000;
+        }
+
+        .service-media video,
+        .service-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover .service-media video,
+        .service-card:hover .service-media img {
+            transform: scale(1.05);
+        }
+
+        /* Автовоспроизведение видео */
+        .auto-play-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Кнопки для ссылок на сайты */
+        .website-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .website-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .website-link:hover {
+            background: white;
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .website-link i {
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .website-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Цвета для разных кнопок */
+        .website-link:nth-child(1) {
+            background: linear-gradient(135deg, #2a2d7c, #3a3fa0);
+        }
+
+        .website-link:nth-child(2) {
+            background: linear-gradient(135deg, #1a5fb4, #2a7dd6);
+        }
+
+        .website-link:nth-child(3) {
+            background: linear-gradient(135deg, #26a269, #36b279);
+        }
+
+        .website-link:nth-child(4) {
+            background: linear-gradient(135deg, #a51d2d, #c53445);
+        }
+
+        .website-link:nth-child(5) {
+            background: linear-gradient(135deg, #7c2a8c, #9c3aac);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: #f5f7ff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .price-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--secondary);
+        }
+
+        .price-header {
+            background: var(--primary);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .price-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .price-period {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 30px;
+            transform: rotate(45deg);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .price-features {
+            padding: 30px;
+        }
+
+        .price-features ul {
+            list-style: none;
+        }
+
+        .price-features ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .price-features ul li i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        .price-features ul li.disabled {
+            color: #ccc;
+        }
+
+        .price-features ul li.disabled i {
+            color: #ccc;
+        }
+
+        .price-button {
+            text-align: center;
+            padding: 0 30px 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), #1a1a2e);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .instagram-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .instagram-link i {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-links a {
+            display: inline-block;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .price-card.featured {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .website-links {
+                flex-direction: column;
+            }
+
+            .website-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .social-links {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Bainakarov</span>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="mobile-menu" id="mainNav">
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services-portfolio">Услуги с портфолио</a></li>
+                        <li><a href="#pricing">Прайс-лист</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Bainakarov: Воплощаем цифровые идеи в жизнь</h1>
+            <p>Специализируемся на создании видеоигр, 3D визуализации интерьеров, разработке мобильных приложений и веб-сайтов. Превращаем ваши концепции в качественные цифровые продукты.</p>
+        </div>
+    </section>
+
+    <!-- Услуги с портфолио -->
+    <section class="services-portfolio" id="services-portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Услуги с примерами работ</h2>
+                <p>Мы предлагаем полный цикл разработки цифровых продуктов. Каждая услуга сопровождается примерами из нашего портфолио.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Разработка видеоигр с видео (автовоспроизведение) -->
+                <div class="service-card">
+                    <div class="service-media">
+                        <!-- Видео "Игра.mp4" с автовоспроизведением -->
+                        <video class="auto-play-video" autoplay muted loop playsinline>
+                            <source src="Игра.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Разработка видеоигр</h3>
+                        <p>Создание игр для PC, консолей и мобильных устройств. От инди-проектов до AAA-игр. Наше демо-видео показывает игровой процесс созданных нами проектов.</p>
+                        <p><small>Видео: Игра.mp4 - демонстрация игрового процесса (автовоспроизведение)</small></p>
+                    </div>
+                </div>
+                
+                <!-- Визуализация интерьеров с изображением -->
+                <div class="service-card">
+                    <div class="service-media">
+                        <!-- Изображение "Интерьер.jpg" -->
+                        <img src="Интерьер.jpg" alt="Визуализация интерьеров">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h3>3D визуализация интерьеров</h3>
+                        <p>Фотореалистичная 3D визуализация интерьеров для дизайнеров, архитекторов и застройщиков. Создаем реалистичные изображения будущих помещений.</p>
+                        <p><small>Изображение: Интерьер.jpg - пример нашей работы</small></p>
+                    </div>
+                </div>
+                
+                <!-- Мобильные приложения -->
+                <div class="service-card">
+                    <div class="service-media">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мобильные приложения">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Мобильные приложения</h3>
+                        <p>Разработка iOS и Android приложений с современным дизайном и высокой производительностью. От концепции до публикации в магазинах приложений.</p>
+                    </div>
+                </div>
+                
+                <!-- Разработка сайтов со статичным изображением -->
+                <div class="service-card">
+                    <div class="service-media">
+                        <!-- Статичное изображение по теме разработки сайтов -->
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Разработка сайтов">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Разработка сайтов</h3>
+                        <p>Создание современных, адаптивных и высокопроизводительных веб-сайтов и веб-приложений. Используем передовые технологии для достижения лучших результатов.</p>
+                        
+                        <!-- Красивые кнопки-ссылки на реальные сайты -->
+                        <div class="website-links">
+                            <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" class="website-link">
+                                <span>Alem-Komfort - Строительная компания</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://xsrt456rf.github.io/QAZBIZ-ART/" target="_blank" class="website-link">
+                                <span>QAZBIZ-ART - Бизнес-портал</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://xsrt456rf.github.io/clinickim.kz/" target="_blank" class="website-link">
+                                <span>Clinickim.kz - Медицинский центр</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://xsrt456rf.github.io/Med.Testi/" target="_blank" class="website-link">
+                                <span>Med.Testi - Медицинские тесты</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="http://xsrt456rf.github.io/Psychotests/" target="_blank" class="website-link">
+                                <span>Psychotests - Психологические тесты</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Прайс-лист</h2>
+                <p>Гибкие тарифы для проектов любого масштаба. Цены указаны за базовые пакеты услуг.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Стартовый</h3>
+                        <div class="price">от 250 000 <span class="price-currency">₸</span></div>
+                        <div class="price-period">за проект</div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Концепция и планирование</li>
+                            <li><i class="fas fa-check"></i> Базовый дизайн</li>
+                            <li><i class="fas fa-check"></i> Прототипирование</li>
+                            <li><i class="fas fa-check"></i> Тестирование на 1 платформе</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Мультиплатформенность</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Продвинутая графика</li>
+                        </ul>
+                    </div>
+                    <div class="price-button">
+                        <a href="#contact" class="btn btn-outline">Выбрать тариф</a>
+                    </div>
+                </div>
+                
+                <div class="price-card featured">
+                    <div class="price-badge">Популярный</div>
+                    <div class="price-header">
+                        <h3>Профессиональный</h3>
+                        <div class="price">от 750 000 <span class="price-currency">₸</span></div>
+                        <div class="price-period">за проект</div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Полный цикл разработки</li>
+                            <li><i class="fas fa-check"></i> Уникальный дизайн</li>
+                            <li><i class="fas fa-check"></i> Адаптация под 2 платформы</li>
+                            <li><i class="fas fa-check"></i> Тестирование и отладка</li>
+                            <li><i class="fas fa-check"></i> Базовая анимация и эффекты</li>
+                            <li><i class="fas fa-check"></i> Техническая поддержка 3 месяца</li>
+                        </ul>
+                    </div>
+                    <div class="price-button">
+                        <a href="#contact" class="btn">Выбрать тариф</a>
+                    </div>
+                </div>
+                
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Премиум</h3>
+                        <div class="price">от 1 500 000 <span class="price-currency">₸</span></div>
+                        <div class="price-period">за проект</div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Полный цикл разработки</li>
+                            <li><i class="fas fa-check"></i> Эксклюзивный дизайн</li>
+                            <li><i class="fas fa-check"></i> Мультиплатформенность</li>
+                            <li><i class="fas fa-check"></i> Продвинутая графика и анимация</li>
+                            <li><i class="fas fa-check"></i> Маркетинговые материалы</li>
+                            <li><i class="fas fa-check"></i> Техническая поддержка 12 месяцев</li>
+                        </ul>
+                    </div>
+                    <div class="price-button">
+                        <a href="#contact" class="btn btn-outline">Выбрать тариф</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <p>Точная стоимость рассчитывается индивидуально после обсуждения деталей проекта. Все цены указаны в казахстанских тенге (₸).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h3>Свяжитесь со мной</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+                По всем вопросам сотрудничества и заказа услуг обращайтесь через Instagram
+            </p>
+            
+            <a href="https://www.instagram.com/baynakarov/" target="_blank" class="instagram-link">
+                <i class="fab fa-instagram"></i>
+                @baynakarov в Instagram
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Bainakarov</span>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.instagram.com/baynakarov/" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов. Цены указаны в тенге (₸).</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">
+                    Примеры работ: 
+                    <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Alem-Komfort</a> | 
+                    <a href="https://xsrt456rf.github.io/QAZBIZ-ART/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">QAZBIZ-ART</a> | 
+                    <a href="https://xsrt456rf.github.io/clinickim.kz/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Clinickim.kz</a> |
+                    <a href="https://xsrt456rf.github.io/Med.Testi/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Med.Testi</a> | 
+                    <a href="http://xsrt456rf.github.io/Psychotests/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Psychotests</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Close mobile menu if open
+                    if(mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Управление автовоспроизведением видео
+        const autoPlayVideos = document.querySelectorAll('.auto-play-video');
+        
+        // Попытка запустить все видео при загрузке страницы
+        window.addEventListener('load', () => {
+            autoPlayVideos.forEach(video => {
+                // Устанавливаем видео на начало
+                video.currentTime = 0;
+                
+                // Пытаемся запустить воспроизведение
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Автовоспроизведение заблокировано браузером");
+                        // Добавляем кнопку воспроизведения, если автовоспроизведение заблокировано
+                        const parent = video.parentElement;
+                        const playButton = document.createElement('button');
+                        playButton.innerHTML = '<i class="fas fa-play"></i> Включить видео';
+                        playButton.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; z-index: 10;';
+                        playButton.addEventListener('click', () => {
+                            video.play();
+                            playButton.style.display = 'none';
+                        });
+                        parent.style.position = 'relative';
+                        parent.appendChild(playButton);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
