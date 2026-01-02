@@ -165,50 +165,68 @@
             overflow: hidden;
             position: relative;
             background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Пропорциональное отображение ВСЕХ медиафайлов */
         .service-media video,
-        .service-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .service-media .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
             transition: transform 0.5s;
         }
 
         .service-card:hover .service-media video,
-        .service-card:hover .service-media img {
+        .service-card:hover .service-media .image-container img {
             transform: scale(1.05);
         }
 
-        /* Слайдер для сайтов */
-        .sites-slider {
+        /* Контейнер для изображений в слайдере */
+        .image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Слайдер для изображений */
+        .images-slider {
             position: relative;
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background-color: #000;
         }
 
-        .sites-slides {
+        .images-slides {
             display: flex;
-            width: 200%;
             height: 100%;
             transition: transform 0.5s ease-in-out;
         }
 
-        .sites-slides.slide2 {
-            transform: translateX(-50%);
-        }
-
-        .site-slide {
-            width: 50%;
+        .image-slide {
+            min-width: 100%;
             height: 100%;
             flex-shrink: 0;
-        }
-
-        .site-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
         }
 
         .slider-nav {
@@ -270,11 +288,26 @@
             right: 10px;
         }
 
-        /* Автовоспроизведение видео */
+        /* Счетчик слайдов */
+        .slide-counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            z-index: 5;
+        }
+
+        /* Видео без обрезки */
         .auto-play-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
         }
 
         /* Стиль для кнопки воспроизведения видео */
@@ -756,11 +789,50 @@
                     </div>
                 </div>
                 
-                <!-- Визуализация интерьеров с изображением -->
+                <!-- Визуализация интерьеров с 4 изображениями (слайдер) -->
                 <div class="service-card">
                     <div class="service-media">
-                        <!-- Изображение "Интерьер.jpg" -->
-                        <img src="./Интерьер.jpg" alt="Визуализация интерьеров" loading="lazy">
+                        <!-- Слайдер с 4 изображениями интерьеров -->
+                        <div class="images-slider" id="interiorSlider">
+                            <div class="images-slides" id="interiorSlides">
+                                <div class="image-slide">
+                                    <div class="image-container">
+                                        <img src="./Интерьер.jpg" alt="Интерьер 1" loading="lazy">
+                                    </div>
+                                </div>
+                                <div class="image-slide">
+                                    <div class="image-container">
+                                        <img src="./Интерьер2.jpg" alt="Интерьер 2" loading="lazy">
+                                    </div>
+                                </div>
+                                <div class="image-slide">
+                                    <div class="image-container">
+                                        <img src="./Интерьер3.jpg" alt="Интерьер 3" loading="lazy">
+                                    </div>
+                                </div>
+                                <div class="image-slide">
+                                    <div class="image-container">
+                                        <img src="./Интерьер4.jpg" alt="Интерьер 4" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Счетчик слайдов -->
+                            <div class="slide-counter" id="interiorCounter">1/4</div>
+                            <!-- Стрелки навигации -->
+                            <button class="slider-arrow prev" onclick="prevInteriorSlide()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-arrow next" onclick="nextInteriorSlide()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <!-- Точки навигации -->
+                            <div class="slider-nav">
+                                <div class="slider-dot active" onclick="goToInteriorSlide(0)"></div>
+                                <div class="slider-dot" onclick="goToInteriorSlide(1)"></div>
+                                <div class="slider-dot" onclick="goToInteriorSlide(2)"></div>
+                                <div class="slider-dot" onclick="goToInteriorSlide(3)"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -768,14 +840,14 @@
                         </div>
                         <h3>3D визуализация интерьеров</h3>
                         <p>Фотореалистичная 3D визуализация интерьеров для дизайнеров, архитекторов и застройщиков. Создаем реалистичные изображения будущих помещений.</p>
-                        <p><small>Изображение: Интерьер.jpg - пример нашей работы</small></p>
+                        <p><small>Изображения: Интерьер, Интерьер2, Интерьер3, Интерьер4 - примеры наших работ</small></p>
                     </div>
                 </div>
                 
-                <!-- Мобильные приложения с видео -->
+                <!-- Мобильные приложения с видео (без обрезки) -->
                 <div class="service-card">
                     <div class="service-media">
-                        <!-- Видео "приложение.mp4" с автовоспроизведением -->
+                        <!-- Видео "приложение.mp4" с автовоспроизведением и пропорциональным отображением -->
                         <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
                             <source src="./приложение.mp4" type="video/mp4">
                             Ваш браузер не поддерживает видео.
@@ -790,7 +862,7 @@
                         </div>
                         <h3>Мобильные приложения</h3>
                         <p>Разработка iOS и Android приложений с современным дизайном и высокой производительностью. От концепции до публикации в магазинах приложений.</p>
-                        <p><small>Видео: приложение.mp4 - демонстрация мобильного приложения</small></p>
+                        <p><small>Видео: приложение.mp4 - демонстрация мобильного приложения (полное отображение)</small></p>
                     </div>
                 </div>
                 
@@ -798,15 +870,21 @@
                 <div class="service-card">
                     <div class="service-media">
                         <!-- Слайдер с двумя изображениями сайтов -->
-                        <div class="sites-slider" id="sitesSlider">
-                            <div class="sites-slides" id="sitesSlides">
-                                <div class="site-slide">
-                                    <img src="./Сайт.jpg" alt="Пример сайта 1" loading="lazy">
+                        <div class="images-slider" id="sitesSlider">
+                            <div class="images-slides" id="sitesSlides">
+                                <div class="image-slide">
+                                    <div class="image-container">
+                                        <img src="./Сайт.jpg" alt="Пример сайта 1" loading="lazy">
+                                    </div>
                                 </div>
-                                <div class="site-slide">
-                                    <img src="./Сайт1.jpg" alt="Пример сайта 2" loading="lazy">
+                                <div class="image-slide">
+                                    <div class="image-container">
+                                        <img src="./Сайт1.jpg" alt="Пример сайта 2" loading="lazy">
+                                    </div>
                                 </div>
                             </div>
+                            <!-- Счетчик слайдов -->
+                            <div class="slide-counter" id="sitesCounter">1/2</div>
                             <!-- Стрелки навигации -->
                             <button class="slider-arrow prev" onclick="prevSiteSlide()">
                                 <i class="fas fa-chevron-left"></i>
@@ -1117,22 +1195,84 @@
                 });
             });
             
-            // Запускаем автопереключение слайдов для сайтов
+            // Запускаем автопереключение слайдов
+            startInteriorSliderAutoPlay();
             startSitesSliderAutoPlay();
         });
         
-        // Слайдер для изображений сайтов
+        // Слайдер для интерьеров (4 изображения)
+        let currentInteriorSlide = 0;
+        const totalInteriorSlides = 4;
+        const interiorSlides = document.getElementById('interiorSlides');
+        const interiorDots = document.querySelectorAll('#interiorSlider .slider-dot');
+        const interiorCounter = document.getElementById('interiorCounter');
+        
+        function nextInteriorSlide() {
+            currentInteriorSlide = (currentInteriorSlide + 1) % totalInteriorSlides;
+            updateInteriorSlider();
+        }
+        
+        function prevInteriorSlide() {
+            currentInteriorSlide = (currentInteriorSlide - 1 + totalInteriorSlides) % totalInteriorSlides;
+            updateInteriorSlider();
+        }
+        
+        function goToInteriorSlide(index) {
+            currentInteriorSlide = index;
+            updateInteriorSlider();
+        }
+        
+        function updateInteriorSlider() {
+            const translateX = -currentInteriorSlide * 100;
+            interiorSlides.style.transform = `translateX(${translateX}%)`;
+            
+            // Обновляем точки навигации
+            interiorDots.forEach((dot, index) => {
+                if (index === currentInteriorSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // Обновляем счетчик
+            interiorCounter.textContent = `${currentInteriorSlide + 1}/${totalInteriorSlides}`;
+        }
+        
+        // Автопереключение слайдов интерьеров
+        let interiorSliderInterval;
+        
+        function startInteriorSliderAutoPlay() {
+            clearInterval(interiorSliderInterval);
+            interiorSliderInterval = setInterval(nextInteriorSlide, 3500); // Меняем каждые 3.5 секунды
+        }
+        
+        // Останавливаем автопереключение при наведении на слайдер
+        const interiorSlider = document.getElementById('interiorSlider');
+        if (interiorSlider) {
+            interiorSlider.addEventListener('mouseenter', () => {
+                clearInterval(interiorSliderInterval);
+            });
+            
+            interiorSlider.addEventListener('mouseleave', () => {
+                startInteriorSliderAutoPlay();
+            });
+        }
+        
+        // Слайдер для сайтов (2 изображения)
         let currentSiteSlide = 0;
+        const totalSiteSlides = 2;
         const siteSlides = document.getElementById('sitesSlides');
-        const siteDots = document.querySelectorAll('.slider-dot');
+        const siteDots = document.querySelectorAll('#sitesSlider .slider-dot');
+        const sitesCounter = document.getElementById('sitesCounter');
         
         function nextSiteSlide() {
-            currentSiteSlide = (currentSiteSlide + 1) % 2;
+            currentSiteSlide = (currentSiteSlide + 1) % totalSiteSlides;
             updateSiteSlider();
         }
         
         function prevSiteSlide() {
-            currentSiteSlide = (currentSiteSlide - 1 + 2) % 2;
+            currentSiteSlide = (currentSiteSlide - 1 + totalSiteSlides) % totalSiteSlides;
             updateSiteSlider();
         }
         
@@ -1142,11 +1282,8 @@
         }
         
         function updateSiteSlider() {
-            if (currentSiteSlide === 0) {
-                siteSlides.classList.remove('slide2');
-            } else {
-                siteSlides.classList.add('slide2');
-            }
+            const translateX = -currentSiteSlide * 100;
+            siteSlides.style.transform = `translateX(${translateX}%)`;
             
             // Обновляем точки навигации
             siteDots.forEach((dot, index) => {
@@ -1156,9 +1293,12 @@
                     dot.classList.remove('active');
                 }
             });
+            
+            // Обновляем счетчик
+            sitesCounter.textContent = `${currentSiteSlide + 1}/${totalSiteSlides}`;
         }
         
-        // Автопереключение слайдов
+        // Автопереключение слайдов сайтов
         let sitesSliderInterval;
         
         function startSitesSliderAutoPlay() {
@@ -1177,6 +1317,10 @@
                 startSitesSliderAutoPlay();
             });
         }
+        
+        // Инициализация слайдеров
+        updateInteriorSlider();
+        updateSiteSlider();
     </script>
 </body>
 </html>
