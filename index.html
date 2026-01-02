@@ -216,7 +216,7 @@
         .images-slides {
             display: flex;
             height: 100%;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.8s ease-in-out;
         }
 
         .image-slide {
@@ -227,78 +227,7 @@
             align-items: center;
             justify-content: center;
             background-color: #000;
-        }
-
-        .slider-nav {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            z-index: 5;
-        }
-
-        .slider-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .slider-dot.active {
-            background: var(--secondary);
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 5;
-            opacity: 0;
-            transition: opacity 0.3s, background 0.3s;
-        }
-
-        .service-media:hover .slider-arrow {
-            opacity: 1;
-        }
-
-        .slider-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .slider-arrow.prev {
-            left: 10px;
-        }
-
-        .slider-arrow.next {
-            right: 10px;
-        }
-
-        /* Счетчик слайдов */
-        .slide-counter {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            z-index: 5;
+            position: relative;
         }
 
         /* Видео без обрезки */
@@ -308,36 +237,6 @@
             width: auto;
             height: auto;
             object-fit: contain;
-        }
-
-        /* Стиль для кнопки воспроизведения видео */
-        .video-play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-        }
-
-        .video-play-button:hover {
-            background: #e55a2b;
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-
-        .video-play-button.hidden {
-            display: none;
         }
 
         .service-content {
@@ -716,11 +615,6 @@
             .social-links {
                 margin-top: 20px;
             }
-
-            .slider-arrow {
-                opacity: 1;
-                background: rgba(0, 0, 0, 0.7);
-            }
         }
     </style>
 </head>
@@ -775,9 +669,6 @@
                             <source src="./Игра.mp4" type="video/mp4">
                             Ваш браузер не поддерживает видео.
                         </video>
-                        <button class="video-play-button hidden" data-video="game-video">
-                            <i class="fas fa-play"></i> Включить видео
-                        </button>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -789,7 +680,7 @@
                     </div>
                 </div>
                 
-                <!-- Визуализация интерьеров с 4 изображениями (слайдер) -->
+                <!-- Визуализация интерьеров с 4 изображениями (автослайдшоу) -->
                 <div class="service-card">
                     <div class="service-media">
                         <!-- Слайдер с 4 изображениями интерьеров -->
@@ -816,22 +707,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Счетчик слайдов -->
-                            <div class="slide-counter" id="interiorCounter">1/4</div>
-                            <!-- Стрелки навигации -->
-                            <button class="slider-arrow prev" onclick="prevInteriorSlide()">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-arrow next" onclick="nextInteriorSlide()">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                            <!-- Точки навигации -->
-                            <div class="slider-nav">
-                                <div class="slider-dot active" onclick="goToInteriorSlide(0)"></div>
-                                <div class="slider-dot" onclick="goToInteriorSlide(1)"></div>
-                                <div class="slider-dot" onclick="goToInteriorSlide(2)"></div>
-                                <div class="slider-dot" onclick="goToInteriorSlide(3)"></div>
-                            </div>
                         </div>
                     </div>
                     <div class="service-content">
@@ -852,9 +727,6 @@
                             <source src="./приложение.mp4" type="video/mp4">
                             Ваш браузер не поддерживает видео.
                         </video>
-                        <button class="video-play-button hidden" data-video="app-video">
-                            <i class="fas fa-play"></i> Включить видео
-                        </button>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -866,7 +738,7 @@
                     </div>
                 </div>
                 
-                <!-- Разработка сайтов с двумя изображениями (слайдер) -->
+                <!-- Разработка сайтов с двумя изображениями (автослайдшоу) -->
                 <div class="service-card">
                     <div class="service-media">
                         <!-- Слайдер с двумя изображениями сайтов -->
@@ -882,20 +754,6 @@
                                         <img src="./Сайт1.jpg" alt="Пример сайта 2" loading="lazy">
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Счетчик слайдов -->
-                            <div class="slide-counter" id="sitesCounter">1/2</div>
-                            <!-- Стрелки навигации -->
-                            <button class="slider-arrow prev" onclick="prevSiteSlide()">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-arrow next" onclick="nextSiteSlide()">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                            <!-- Точки навигации -->
-                            <div class="slider-nav">
-                                <div class="slider-dot active" onclick="goToSiteSlide(0)"></div>
-                                <div class="slider-dot" onclick="goToSiteSlide(1)"></div>
                             </div>
                         </div>
                     </div>
@@ -1059,7 +917,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов. Цены указаны в тенге (₸).</p>
+                <p>&copy; 2024 Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов. Цены указаны в тенге (₸).</p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">
                     Примеры работ: 
                     <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Alem-Komfort</a> | 
@@ -1109,218 +967,36 @@
             });
         });
         
-        // Управление автовоспроизведением видео
-        const autoPlayVideos = document.querySelectorAll('.auto-play-video');
-        const videoPlayButtons = document.querySelectorAll('.video-play-button');
-        
-        // Проверяем, можно ли автоматически воспроизводить видео
-        function checkAutoplaySupport() {
-            return new Promise((resolve) => {
-                const testVideo = document.createElement('video');
-                testVideo.autoplay = true;
-                testVideo.muted = true;
-                testVideo.playsInline = true;
-                
-                const playPromise = testVideo.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        resolve(true);
-                    }).catch(() => {
-                        resolve(false);
-                    });
-                } else {
-                    resolve(false);
-                }
-            });
-        }
-        
-        // Пытаемся запустить все видео при загрузке страницы
-        window.addEventListener('load', async () => {
-            const canAutoplay = await checkAutoplaySupport();
-            
-            autoPlayVideos.forEach((video, index) => {
-                // Устанавливаем видео на начало
-                video.currentTime = 0;
-                
-                // Если автовоспроизведение поддерживается, пытаемся запустить
-                if (canAutoplay) {
-                    const playPromise = video.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log("Автовоспроизведение заблокировано браузером для видео", index);
-                            // Показываем кнопку воспроизведения
-                            if (videoPlayButtons[index]) {
-                                videoPlayButtons[index].classList.remove('hidden');
-                            }
-                        });
-                    }
-                } else {
-                    // Если автовоспроизведение не поддерживается, показываем кнопки
-                    if (videoPlayButtons[index]) {
-                        videoPlayButtons[index].classList.remove('hidden');
-                    }
-                }
-                
-                // Обработчик ошибок загрузки видео
-                video.addEventListener('error', (e) => {
-                    console.error("Ошибка загрузки видео:", e);
-                    if (videoPlayButtons[index]) {
-                        videoPlayButtons[index].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Видео не загружено';
-                        videoPlayButtons[index].style.background = '#dc3545';
-                    }
-                });
-                
-                // Обработчик успешной загрузки видео
-                video.addEventListener('loadeddata', () => {
-                    console.log("Видео загружено успешно:", video.src);
-                });
-            });
-            
-            // Добавляем обработчики для кнопок воспроизведения
-            videoPlayButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const parentMedia = button.closest('.service-media');
-                    const video = parentMedia.querySelector('video');
-                    
-                    if (video) {
-                        video.play().then(() => {
-                            button.classList.add('hidden');
-                        }).catch(error => {
-                            console.error("Ошибка воспроизведения видео:", error);
-                            button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ошибка воспроизведения';
-                        });
-                    }
-                });
-            });
-            
-            // Запускаем автопереключение слайдов
-            startInteriorSliderAutoPlay();
-            startSitesSliderAutoPlay();
-        });
-        
-        // Слайдер для интерьеров (4 изображения)
-        let currentInteriorSlide = 0;
-        const totalInteriorSlides = 4;
+        // Автослайдшоу для интерьеров (4 изображения)
+        let interiorCurrentSlide = 0;
         const interiorSlides = document.getElementById('interiorSlides');
-        const interiorDots = document.querySelectorAll('#interiorSlider .slider-dot');
-        const interiorCounter = document.getElementById('interiorCounter');
+        const interiorTotalSlides = 4;
         
+        // Автослайдшоу для сайтов (2 изображения)
+        let sitesCurrentSlide = 0;
+        const sitesSlides = document.getElementById('sitesSlides');
+        const sitesTotalSlides = 2;
+        
+        // Функция для переключения слайдов интерьеров
         function nextInteriorSlide() {
-            currentInteriorSlide = (currentInteriorSlide + 1) % totalInteriorSlides;
-            updateInteriorSlider();
+            interiorCurrentSlide = (interiorCurrentSlide + 1) % interiorTotalSlides;
+            interiorSlides.style.transform = `translateX(-${interiorCurrentSlide * 100}%)`;
         }
         
-        function prevInteriorSlide() {
-            currentInteriorSlide = (currentInteriorSlide - 1 + totalInteriorSlides) % totalInteriorSlides;
-            updateInteriorSlider();
-        }
-        
-        function goToInteriorSlide(index) {
-            currentInteriorSlide = index;
-            updateInteriorSlider();
-        }
-        
-        function updateInteriorSlider() {
-            const translateX = -currentInteriorSlide * 100;
-            interiorSlides.style.transform = `translateX(${translateX}%)`;
-            
-            // Обновляем точки навигации
-            interiorDots.forEach((dot, index) => {
-                if (index === currentInteriorSlide) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-            
-            // Обновляем счетчик
-            interiorCounter.textContent = `${currentInteriorSlide + 1}/${totalInteriorSlides}`;
-        }
-        
-        // Автопереключение слайдов интерьеров
-        let interiorSliderInterval;
-        
-        function startInteriorSliderAutoPlay() {
-            clearInterval(interiorSliderInterval);
-            interiorSliderInterval = setInterval(nextInteriorSlide, 3500); // Меняем каждые 3.5 секунды
-        }
-        
-        // Останавливаем автопереключение при наведении на слайдер
-        const interiorSlider = document.getElementById('interiorSlider');
-        if (interiorSlider) {
-            interiorSlider.addEventListener('mouseenter', () => {
-                clearInterval(interiorSliderInterval);
-            });
-            
-            interiorSlider.addEventListener('mouseleave', () => {
-                startInteriorSliderAutoPlay();
-            });
-        }
-        
-        // Слайдер для сайтов (2 изображения)
-        let currentSiteSlide = 0;
-        const totalSiteSlides = 2;
-        const siteSlides = document.getElementById('sitesSlides');
-        const siteDots = document.querySelectorAll('#sitesSlider .slider-dot');
-        const sitesCounter = document.getElementById('sitesCounter');
-        
+        // Функция для переключения слайдов сайтов
         function nextSiteSlide() {
-            currentSiteSlide = (currentSiteSlide + 1) % totalSiteSlides;
-            updateSiteSlider();
+            sitesCurrentSlide = (sitesCurrentSlide + 1) % sitesTotalSlides;
+            sitesSlides.style.transform = `translateX(-${sitesCurrentSlide * 100}%)`;
         }
         
-        function prevSiteSlide() {
-            currentSiteSlide = (currentSiteSlide - 1 + totalSiteSlides) % totalSiteSlides;
-            updateSiteSlider();
-        }
-        
-        function goToSiteSlide(index) {
-            currentSiteSlide = index;
-            updateSiteSlider();
-        }
-        
-        function updateSiteSlider() {
-            const translateX = -currentSiteSlide * 100;
-            siteSlides.style.transform = `translateX(${translateX}%)`;
+        // Запуск автослайдшоу при загрузке страницы
+        window.addEventListener('load', () => {
+            // Интерьеры: меняем каждые 3 секунды
+            setInterval(nextInteriorSlide, 3000);
             
-            // Обновляем точки навигации
-            siteDots.forEach((dot, index) => {
-                if (index === currentSiteSlide) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-            
-            // Обновляем счетчик
-            sitesCounter.textContent = `${currentSiteSlide + 1}/${totalSiteSlides}`;
-        }
-        
-        // Автопереключение слайдов сайтов
-        let sitesSliderInterval;
-        
-        function startSitesSliderAutoPlay() {
-            clearInterval(sitesSliderInterval);
-            sitesSliderInterval = setInterval(nextSiteSlide, 4000); // Меняем каждые 4 секунды
-        }
-        
-        // Останавливаем автопереключение при наведении на слайдер
-        const sitesSlider = document.getElementById('sitesSlider');
-        if (sitesSlider) {
-            sitesSlider.addEventListener('mouseenter', () => {
-                clearInterval(sitesSliderInterval);
-            });
-            
-            sitesSlider.addEventListener('mouseleave', () => {
-                startSitesSliderAutoPlay();
-            });
-        }
-        
-        // Инициализация слайдеров
-        updateInteriorSlider();
-        updateSiteSlider();
+            // Сайты: меняем каждые 3.5 секунды (чтобы не совпадало с интерьерами)
+            setInterval(nextSiteSlide, 3500);
+        });
     </script>
 </body>
 </html>
