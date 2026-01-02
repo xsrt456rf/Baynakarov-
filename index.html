@@ -162,75 +162,55 @@
 
         .service-media {
             height: 250px;
-            overflow: hidden;
             position: relative;
             background-color: #000;
+            overflow: hidden;
+        }
+
+        /* Слайдер контейнер */
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Слайды */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #000;
         }
 
-        /* Пропорциональное отображение ВСЕХ медиафайлов */
-        .service-media video,
-        .service-media .image-container img {
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
             max-width: 100%;
             max-height: 100%;
             width: auto;
             height: auto;
             object-fit: contain;
-            transition: transform 0.5s;
         }
 
-        .service-card:hover .service-media video,
-        .service-card:hover .service-media .image-container img {
-            transform: scale(1.05);
-        }
-
-        /* Контейнер для изображений в слайдере */
-        .image-container {
+        /* Видео */
+        .video-container {
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background: #000;
         }
 
-        .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-        /* Слайдер для изображений */
-        .images-slider {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-        }
-
-        .images-slides {
-            display: flex;
-            height: 100%;
-            transition: transform 0.8s ease-in-out;
-        }
-
-        .image-slide {
-            min-width: 100%;
-            height: 100%;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #000;
-            position: relative;
-        }
-
-        /* Видео без обрезки */
         .auto-play-video {
             max-width: 100%;
             max-height: 100%;
@@ -661,14 +641,15 @@
             </div>
             
             <div class="services-grid">
-                <!-- Разработка видеоигр с видео (автовоспроизведение) -->
+                <!-- Разработка видеоигр с видео -->
                 <div class="service-card">
                     <div class="service-media">
-                        <!-- Видео "Игра.mp4" с автовоспроизведением -->
-                        <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
-                            <source src="./Игра.mp4" type="video/mp4">
-                            Ваш браузер не поддерживает видео.
-                        </video>
+                        <div class="video-container">
+                            <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
+                                <source src="./Игра.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -680,32 +661,21 @@
                     </div>
                 </div>
                 
-                <!-- Визуализация интерьеров с 4 изображениями (автослайдшоу) -->
+                <!-- Визуализация интерьеров -->
                 <div class="service-card">
                     <div class="service-media">
-                        <!-- Слайдер с 4 изображениями интерьеров -->
-                        <div class="images-slider" id="interiorSlider">
-                            <div class="images-slides" id="interiorSlides">
-                                <div class="image-slide">
-                                    <div class="image-container">
-                                        <img src="./Интерьер.jpg" alt="Интерьер 1" loading="lazy">
-                                    </div>
-                                </div>
-                                <div class="image-slide">
-                                    <div class="image-container">
-                                        <img src="./Интерьер2.jpg" alt="Интерьер 2" loading="lazy">
-                                    </div>
-                                </div>
-                                <div class="image-slide">
-                                    <div class="image-container">
-                                        <img src="./Интерьер3.jpg" alt="Интерьер 3" loading="lazy">
-                                    </div>
-                                </div>
-                                <div class="image-slide">
-                                    <div class="image-container">
-                                        <img src="./Интерьер4.jpg" alt="Интерьер 4" loading="lazy">
-                                    </div>
-                                </div>
+                        <div class="slider-container" id="interiorSlider">
+                            <div class="slide active">
+                                <img src="./Интерьер.jpg" alt="Интерьер 1">
+                            </div>
+                            <div class="slide">
+                                <img src="./Интерьер2.jpg" alt="Интерьер 2">
+                            </div>
+                            <div class="slide">
+                                <img src="./Интерьер3.jpg" alt="Интерьер 3">
+                            </div>
+                            <div class="slide">
+                                <img src="./Интерьер4.jpg" alt="Интерьер 4">
                             </div>
                         </div>
                     </div>
@@ -719,14 +689,15 @@
                     </div>
                 </div>
                 
-                <!-- Мобильные приложения с видео (без обрезки) -->
+                <!-- Мобильные приложения -->
                 <div class="service-card">
                     <div class="service-media">
-                        <!-- Видео "приложение.mp4" с автовоспроизведением и пропорциональным отображением -->
-                        <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
-                            <source src="./приложение.mp4" type="video/mp4">
-                            Ваш браузер не поддерживает видео.
-                        </video>
+                        <div class="video-container">
+                            <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
+                                <source src="./приложение.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -734,26 +705,19 @@
                         </div>
                         <h3>Мобильные приложения</h3>
                         <p>Разработка iOS и Android приложений с современным дизайном и высокой производительностью. От концепции до публикации в магазинах приложений.</p>
-                        <p><small>Видео: приложение.mp4 - демонстрация мобильного приложения (полное отображение)</small></p>
+                        <p><small>Видео: приложение.mp4 - демонстрация мобильного приложения</small></p>
                     </div>
                 </div>
                 
-                <!-- Разработка сайтов с двумя изображениями (автослайдшоу) -->
+                <!-- Разработка сайтов -->
                 <div class="service-card">
                     <div class="service-media">
-                        <!-- Слайдер с двумя изображениями сайтов -->
-                        <div class="images-slider" id="sitesSlider">
-                            <div class="images-slides" id="sitesSlides">
-                                <div class="image-slide">
-                                    <div class="image-container">
-                                        <img src="./Сайт.jpg" alt="Пример сайта 1" loading="lazy">
-                                    </div>
-                                </div>
-                                <div class="image-slide">
-                                    <div class="image-container">
-                                        <img src="./Сайт1.jpg" alt="Пример сайта 2" loading="lazy">
-                                    </div>
-                                </div>
+                        <div class="slider-container" id="sitesSlider">
+                            <div class="slide active">
+                                <img src="./Сайт.jpg" alt="Пример сайта 1">
+                            </div>
+                            <div class="slide">
+                                <img src="./Сайт1.jpg" alt="Пример сайта 2">
                             </div>
                         </div>
                     </div>
@@ -765,13 +729,11 @@
                         <p>Создание современных, адаптивных и высокопроизводительных веб-сайтов и веб-приложений. Используем передовые технологии для достижения лучших результатов.</p>
                         <p><small>Изображения: Сайт.jpg и Сайт1.jpg - примеры наших работ</small></p>
                         
-                        <!-- Заголовок для ссылок на проекты -->
                         <div class="projects-title">
                             <i class="fas fa-folder-open"></i>
                             Мои проекты:
                         </div>
                         
-                        <!-- Красивые кнопки-ссылки на реальные сайты -->
                         <div class="website-links">
                             <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" class="website-link">
                                 <span>Alem-Komfort - Строительная компания</span>
@@ -917,7 +879,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов. Цены указаны в тенге (₸).</p>
+                <p>&copy; Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов. Цены указаны в тенге (₸).</p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">
                     Примеры работ: 
                     <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Alem-Komfort</a> | 
@@ -953,7 +915,6 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
-                    // Close mobile menu if open
                     if(mainNav.classList.contains('active')) {
                         mainNav.classList.remove('active');
                         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
@@ -967,35 +928,34 @@
             });
         });
         
-        // Автослайдшоу для интерьеров (4 изображения)
-        let interiorCurrentSlide = 0;
-        const interiorSlides = document.getElementById('interiorSlides');
-        const interiorTotalSlides = 4;
-        
-        // Автослайдшоу для сайтов (2 изображения)
-        let sitesCurrentSlide = 0;
-        const sitesSlides = document.getElementById('sitesSlides');
-        const sitesTotalSlides = 2;
-        
-        // Функция для переключения слайдов интерьеров
-        function nextInteriorSlide() {
-            interiorCurrentSlide = (interiorCurrentSlide + 1) % interiorTotalSlides;
-            interiorSlides.style.transform = `translateX(-${interiorCurrentSlide * 100}%)`;
-        }
-        
-        // Функция для переключения слайдов сайтов
-        function nextSiteSlide() {
-            sitesCurrentSlide = (sitesCurrentSlide + 1) % sitesTotalSlides;
-            sitesSlides.style.transform = `translateX(-${sitesCurrentSlide * 100}%)`;
-        }
-        
-        // Запуск автослайдшоу при загрузке страницы
-        window.addEventListener('load', () => {
-            // Интерьеры: меняем каждые 3 секунды
-            setInterval(nextInteriorSlide, 3000);
+        // Автослайдшоу для интерьеров
+        function startInteriorSlider() {
+            const slides = document.querySelectorAll('#interiorSlider .slide');
+            let currentSlide = 0;
             
-            // Сайты: меняем каждые 3.5 секунды (чтобы не совпадало с интерьерами)
-            setInterval(nextSiteSlide, 3500);
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 3000); // 3 секунды
+        }
+        
+        // Автослайдшоу для сайтов
+        function startSitesSlider() {
+            const slides = document.querySelectorAll('#sitesSlider .slide');
+            let currentSlide = 0;
+            
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 3000); // 3 секунды
+        }
+        
+        // Запуск слайдшоу при загрузке
+        window.addEventListener('load', () => {
+            startInteriorSlider();
+            startSitesSlider();
         });
     </script>
 </body>
