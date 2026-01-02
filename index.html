@@ -180,11 +180,131 @@
             transform: scale(1.05);
         }
 
+        /* Слайдер для сайтов */
+        .sites-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .sites-slides {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .sites-slides.slide2 {
+            transform: translateX(-50%);
+        }
+
+        .site-slide {
+            width: 50%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .site-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-dot.active {
+            background: var(--secondary);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s, background 0.3s;
+        }
+
+        .service-media:hover .slider-arrow {
+            opacity: 1;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-arrow.prev {
+            left: 10px;
+        }
+
+        .slider-arrow.next {
+            right: 10px;
+        }
+
         /* Автовоспроизведение видео */
         .auto-play-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* Стиль для кнопки воспроизведения видео */
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .video-play-button:hover {
+            background: #e55a2b;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .video-play-button.hidden {
+            display: none;
         }
 
         .service-content {
@@ -563,6 +683,11 @@
             .social-links {
                 margin-top: 20px;
             }
+
+            .slider-arrow {
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.7);
+            }
         }
     </style>
 </head>
@@ -613,10 +738,13 @@
                 <div class="service-card">
                     <div class="service-media">
                         <!-- Видео "Игра.mp4" с автовоспроизведением -->
-                        <video class="auto-play-video" autoplay muted loop playsinline>
-                            <source src="Игра.mp4" type="video/mp4">
+                        <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
+                            <source src="./Игра.mp4" type="video/mp4">
                             Ваш браузер не поддерживает видео.
                         </video>
+                        <button class="video-play-button hidden" data-video="game-video">
+                            <i class="fas fa-play"></i> Включить видео
+                        </button>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -624,7 +752,7 @@
                         </div>
                         <h3>Разработка видеоигр</h3>
                         <p>Создание игр для PC, консолей и мобильных устройств. От инди-проектов до AAA-игр. Наше демо-видео показывает игровой процесс созданных нами проектов.</p>
-                        <p><small>Видео: Игра.mp4 - демонстрация игрового процесса (автовоспроизведение)</small></p>
+                        <p><small>Видео: Игра.mp4 - демонстрация игрового процесса</small></p>
                     </div>
                 </div>
                 
@@ -632,7 +760,7 @@
                 <div class="service-card">
                     <div class="service-media">
                         <!-- Изображение "Интерьер.jpg" -->
-                        <img src="Интерьер.jpg" alt="Визуализация интерьеров">
+                        <img src="./Интерьер.jpg" alt="Визуализация интерьеров" loading="lazy">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -644,10 +772,17 @@
                     </div>
                 </div>
                 
-                <!-- Мобильные приложения -->
+                <!-- Мобильные приложения с видео -->
                 <div class="service-card">
                     <div class="service-media">
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мобильные приложения">
+                        <!-- Видео "приложение.mp4" с автовоспроизведением -->
+                        <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
+                            <source src="./приложение.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                        <button class="video-play-button hidden" data-video="app-video">
+                            <i class="fas fa-play"></i> Включить видео
+                        </button>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -655,14 +790,36 @@
                         </div>
                         <h3>Мобильные приложения</h3>
                         <p>Разработка iOS и Android приложений с современным дизайном и высокой производительностью. От концепции до публикации в магазинах приложений.</p>
+                        <p><small>Видео: приложение.mp4 - демонстрация мобильного приложения</small></p>
                     </div>
                 </div>
                 
-                <!-- Разработка сайтов со статичным изображением -->
+                <!-- Разработка сайтов с двумя изображениями (слайдер) -->
                 <div class="service-card">
                     <div class="service-media">
-                        <!-- Статичное изображение по теме разработки сайтов -->
-                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Разработка сайтов">
+                        <!-- Слайдер с двумя изображениями сайтов -->
+                        <div class="sites-slider" id="sitesSlider">
+                            <div class="sites-slides" id="sitesSlides">
+                                <div class="site-slide">
+                                    <img src="./Сайт.jpg" alt="Пример сайта 1" loading="lazy">
+                                </div>
+                                <div class="site-slide">
+                                    <img src="./Сайт1.jpg" alt="Пример сайта 2" loading="lazy">
+                                </div>
+                            </div>
+                            <!-- Стрелки навигации -->
+                            <button class="slider-arrow prev" onclick="prevSiteSlide()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-arrow next" onclick="nextSiteSlide()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <!-- Точки навигации -->
+                            <div class="slider-nav">
+                                <div class="slider-dot active" onclick="goToSiteSlide(0)"></div>
+                                <div class="slider-dot" onclick="goToSiteSlide(1)"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -670,6 +827,7 @@
                         </div>
                         <h3>Разработка сайтов</h3>
                         <p>Создание современных, адаптивных и высокопроизводительных веб-сайтов и веб-приложений. Используем передовые технологии для достижения лучших результатов.</p>
+                        <p><small>Изображения: Сайт.jpg и Сайт1.jpg - примеры наших работ</small></p>
                         
                         <!-- Заголовок для ссылок на проекты -->
                         <div class="projects-title">
@@ -875,34 +1033,150 @@
         
         // Управление автовоспроизведением видео
         const autoPlayVideos = document.querySelectorAll('.auto-play-video');
+        const videoPlayButtons = document.querySelectorAll('.video-play-button');
         
-        // Попытка запустить все видео при загрузке страницы
-        window.addEventListener('load', () => {
-            autoPlayVideos.forEach(video => {
+        // Проверяем, можно ли автоматически воспроизводить видео
+        function checkAutoplaySupport() {
+            return new Promise((resolve) => {
+                const testVideo = document.createElement('video');
+                testVideo.autoplay = true;
+                testVideo.muted = true;
+                testVideo.playsInline = true;
+                
+                const playPromise = testVideo.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        resolve(true);
+                    }).catch(() => {
+                        resolve(false);
+                    });
+                } else {
+                    resolve(false);
+                }
+            });
+        }
+        
+        // Пытаемся запустить все видео при загрузке страницы
+        window.addEventListener('load', async () => {
+            const canAutoplay = await checkAutoplaySupport();
+            
+            autoPlayVideos.forEach((video, index) => {
                 // Устанавливаем видео на начало
                 video.currentTime = 0;
                 
-                // Пытаемся запустить воспроизведение
-                const playPromise = video.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log("Автовоспроизведение заблокировано браузером");
-                        // Добавляем кнопку воспроизведения, если автовоспроизведение заблокировано
-                        const parent = video.parentElement;
-                        const playButton = document.createElement('button');
-                        playButton.innerHTML = '<i class="fas fa-play"></i> Включить видео';
-                        playButton.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; z-index: 10;';
-                        playButton.addEventListener('click', () => {
-                            video.play();
-                            playButton.style.display = 'none';
+                // Если автовоспроизведение поддерживается, пытаемся запустить
+                if (canAutoplay) {
+                    const playPromise = video.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log("Автовоспроизведение заблокировано браузером для видео", index);
+                            // Показываем кнопку воспроизведения
+                            if (videoPlayButtons[index]) {
+                                videoPlayButtons[index].classList.remove('hidden');
+                            }
                         });
-                        parent.style.position = 'relative';
-                        parent.appendChild(playButton);
-                    });
+                    }
+                } else {
+                    // Если автовоспроизведение не поддерживается, показываем кнопки
+                    if (videoPlayButtons[index]) {
+                        videoPlayButtons[index].classList.remove('hidden');
+                    }
+                }
+                
+                // Обработчик ошибок загрузки видео
+                video.addEventListener('error', (e) => {
+                    console.error("Ошибка загрузки видео:", e);
+                    if (videoPlayButtons[index]) {
+                        videoPlayButtons[index].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Видео не загружено';
+                        videoPlayButtons[index].style.background = '#dc3545';
+                    }
+                });
+                
+                // Обработчик успешной загрузки видео
+                video.addEventListener('loadeddata', () => {
+                    console.log("Видео загружено успешно:", video.src);
+                });
+            });
+            
+            // Добавляем обработчики для кнопок воспроизведения
+            videoPlayButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const parentMedia = button.closest('.service-media');
+                    const video = parentMedia.querySelector('video');
+                    
+                    if (video) {
+                        video.play().then(() => {
+                            button.classList.add('hidden');
+                        }).catch(error => {
+                            console.error("Ошибка воспроизведения видео:", error);
+                            button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ошибка воспроизведения';
+                        });
+                    }
+                });
+            });
+            
+            // Запускаем автопереключение слайдов для сайтов
+            startSitesSliderAutoPlay();
+        });
+        
+        // Слайдер для изображений сайтов
+        let currentSiteSlide = 0;
+        const siteSlides = document.getElementById('sitesSlides');
+        const siteDots = document.querySelectorAll('.slider-dot');
+        
+        function nextSiteSlide() {
+            currentSiteSlide = (currentSiteSlide + 1) % 2;
+            updateSiteSlider();
+        }
+        
+        function prevSiteSlide() {
+            currentSiteSlide = (currentSiteSlide - 1 + 2) % 2;
+            updateSiteSlider();
+        }
+        
+        function goToSiteSlide(index) {
+            currentSiteSlide = index;
+            updateSiteSlider();
+        }
+        
+        function updateSiteSlider() {
+            if (currentSiteSlide === 0) {
+                siteSlides.classList.remove('slide2');
+            } else {
+                siteSlides.classList.add('slide2');
+            }
+            
+            // Обновляем точки навигации
+            siteDots.forEach((dot, index) => {
+                if (index === currentSiteSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
                 }
             });
-        });
+        }
+        
+        // Автопереключение слайдов
+        let sitesSliderInterval;
+        
+        function startSitesSliderAutoPlay() {
+            clearInterval(sitesSliderInterval);
+            sitesSliderInterval = setInterval(nextSiteSlide, 4000); // Меняем каждые 4 секунды
+        }
+        
+        // Останавливаем автопереключение при наведении на слайдер
+        const sitesSlider = document.getElementById('sitesSlider');
+        if (sitesSlider) {
+            sitesSlider.addEventListener('mouseenter', () => {
+                clearInterval(sitesSliderInterval);
+            });
+            
+            sitesSlider.addEventListener('mouseleave', () => {
+                startSitesSliderAutoPlay();
+            });
+        }
     </script>
 </body>
 </html>
