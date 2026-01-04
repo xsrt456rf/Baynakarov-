@@ -12,7 +12,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         :root {
             --primary: #2a2d7c;
             --secondary: #ff6b35;
@@ -20,20 +20,20 @@
             --light: #f8f9fa;
             --gray: #6c757d;
         }
-
+        
         body {
             background-color: #f5f7ff;
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        
         /* Header */
         header {
             background: linear-gradient(135deg, var(--primary), #1a1a2e);
@@ -44,34 +44,34 @@
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
+        
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
             font-size: 2rem;
             font-weight: 700;
             display: flex;
             align-items: center;
         }
-
+        
         .logo i {
             color: var(--secondary);
             margin-right: 10px;
         }
-
+        
         nav ul {
             display: flex;
             list-style: none;
         }
-
+        
         nav ul li {
             margin-left: 30px;
         }
-
+        
         nav ul li a {
             color: white;
             text-decoration: none;
@@ -79,11 +79,11 @@
             font-size: 1.1rem;
             transition: color 0.3s;
         }
-
+        
         nav ul li a:hover {
             color: var(--secondary);
         }
-
+        
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -92,7 +92,7 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-
+        
         /* Hero Section */
         .hero {
             padding: 80px 0 40px;
@@ -101,49 +101,49 @@
             background-size: cover;
             background-position: center;
         }
-
+        
         .hero h1 {
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 20px;
         }
-
+        
         .hero p {
             font-size: 1.2rem;
             color: var(--gray);
             max-width: 800px;
             margin: 0 auto 30px;
         }
-
+        
         /* Услуги с портфолио */
         .services-portfolio {
             padding: 80px 0;
             background-color: white;
         }
-
+        
         .section-title {
             text-align: center;
             margin-bottom: 60px;
         }
-
+        
         .section-title h2 {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 15px;
         }
-
+        
         .section-title p {
             color: var(--gray);
             max-width: 700px;
             margin: 0 auto;
         }
-
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-
+        
         .service-card {
             background: white;
             border-radius: 10px;
@@ -154,26 +154,26 @@
             flex-direction: column;
             height: 100%;
         }
-
+        
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-
+        
         .service-media {
             height: 250px;
             position: relative;
             background-color: #000;
             overflow: hidden;
         }
-
+        
         /* Слайдер контейнер */
         .slider-container {
             width: 100%;
             height: 100%;
             position: relative;
         }
-
+        
         /* Слайды */
         .slide {
             position: absolute;
@@ -188,62 +188,53 @@
             justify-content: center;
             background: #000;
         }
-
+        
         .slide.active {
             opacity: 1;
         }
-
-        .slide img {
+        
+        .slide video, .slide img {
             max-width: 100%;
             max-height: 100%;
             width: auto;
             height: auto;
             object-fit: contain;
         }
-
-        /* Видео */
-        .video-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000;
-        }
-
-        .auto-play-video {
+        
+        /* Видео слайд */
+        .video-slide video {
             max-width: 100%;
             max-height: 100%;
             width: auto;
             height: auto;
             object-fit: contain;
         }
-
+        
         .service-content {
             padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-
+        
         .service-content h3 {
             color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
-
+        
         .service-content p {
             color: var(--gray);
             margin-bottom: 20px;
             flex-grow: 1;
         }
-
+        
         .service-icon {
             font-size: 2.5rem;
             color: var(--secondary);
             margin-bottom: 15px;
         }
-
+        
         /* Кнопки для ссылок на сайты */
         .website-links {
             display: flex;
@@ -251,7 +242,7 @@
             gap: 10px;
             margin-top: 15px;
         }
-
+        
         .website-link {
             display: flex;
             align-items: center;
@@ -266,7 +257,7 @@
             transition: all 0.3s;
             border: 2px solid transparent;
         }
-
+        
         .website-link:hover {
             background: white;
             color: var(--primary);
@@ -274,41 +265,41 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-
+        
         .website-link i {
             font-size: 1.1rem;
             transition: transform 0.3s;
         }
-
+        
         .website-link:hover i {
             transform: translateX(5px);
         }
-
+        
         /* Цвета для разных кнопок */
         .website-link:nth-child(1) {
             background: linear-gradient(135deg, #2a2d7c, #3a3fa0);
         }
-
+        
         .website-link:nth-child(2) {
             background: linear-gradient(135deg, #1a5fb4, #2a7dd6);
         }
-
+        
         .website-link:nth-child(3) {
             background: linear-gradient(135deg, #26a269, #36b279);
         }
-
+        
         .website-link:nth-child(4) {
             background: linear-gradient(135deg, #a51d2d, #c53445);
         }
-
+        
         .website-link:nth-child(5) {
             background: linear-gradient(135deg, #7c2a8c, #9c3aac);
         }
-
+        
         .website-link:nth-child(6) {
             background: linear-gradient(135deg, #c05621, #e0702b);
         }
-
+        
         /* Заголовок для ссылок на проекты */
         .projects-title {
             font-size: 1.1rem;
@@ -321,23 +312,23 @@
             align-items: center;
             gap: 8px;
         }
-
+        
         .projects-title i {
             color: var(--secondary);
         }
-
+        
         /* Pricing Section */
         .pricing {
             padding: 80px 0;
             background-color: #f5f7ff;
         }
-
+        
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
+        
         .price-card {
             background: white;
             border-radius: 10px;
@@ -346,39 +337,39 @@
             transition: transform 0.3s;
             position: relative;
         }
-
+        
         .price-card.featured {
             transform: scale(1.05);
             border: 2px solid var(--secondary);
         }
-
+        
         .price-header {
             background: var(--primary);
             color: white;
             padding: 25px;
             text-align: center;
         }
-
+        
         .price-header h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
         }
-
+        
         .price {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--secondary);
         }
-
+        
         .price-currency {
             font-size: 1.5rem;
             font-weight: 600;
         }
-
+        
         .price-period {
             color: rgba(255, 255, 255, 0.8);
         }
-
+        
         .price-badge {
             position: absolute;
             top: 20px;
@@ -390,40 +381,40 @@
             font-weight: 600;
             font-size: 0.9rem;
         }
-
+        
         .price-features {
             padding: 30px;
         }
-
+        
         .price-features ul {
             list-style: none;
         }
-
+        
         .price-features ul li {
             padding: 10px 0;
             border-bottom: 1px solid #eee;
             display: flex;
             align-items: center;
         }
-
+        
         .price-features ul li i {
             color: var(--secondary);
             margin-right: 10px;
         }
-
+        
         .price-features ul li.disabled {
             color: #ccc;
         }
-
+        
         .price-features ul li.disabled i {
             color: #ccc;
         }
-
+        
         .price-button {
             text-align: center;
             padding: 0 30px 30px;
         }
-
+        
         .btn {
             display: inline-block;
             background: var(--secondary);
@@ -436,23 +427,23 @@
             cursor: pointer;
             transition: background 0.3s, transform 0.3s;
         }
-
+        
         .btn:hover {
             background: #e55a2b;
             transform: translateY(-3px);
         }
-
+        
         .btn-outline {
             background: transparent;
             border: 2px solid var(--secondary);
             color: var(--secondary);
         }
-
+        
         .btn-outline:hover {
             background: var(--secondary);
             color: white;
         }
-
+        
         /* Contact Section */
         .contact {
             padding: 80px 0;
@@ -460,13 +451,13 @@
             color: white;
             text-align: center;
         }
-
+        
         .contact h3 {
             font-size: 2.5rem;
             margin-bottom: 30px;
             color: white;
         }
-
+        
         .instagram-link {
             display: inline-flex;
             align-items: center;
@@ -482,17 +473,17 @@
             margin-top: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
+        
         .instagram-link:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
-
+        
         .instagram-link i {
             font-size: 2rem;
             margin-right: 15px;
         }
-
+        
         /* Footer */
         footer {
             background-color: var(--dark);
@@ -500,7 +491,7 @@
             padding: 40px 0 20px;
             text-align: center;
         }
-
+        
         .footer-content {
             display: flex;
             justify-content: space-between;
@@ -508,11 +499,11 @@
             flex-wrap: wrap;
             margin-bottom: 30px;
         }
-
+        
         .social-links {
             display: flex;
         }
-
+        
         .social-links a {
             display: inline-block;
             color: white;
@@ -526,72 +517,72 @@
             margin-left: 10px;
             transition: background 0.3s;
         }
-
+        
         .social-links a:hover {
             background: var(--secondary);
         }
-
+        
         .copyright {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
-
+        
         /* Responsive */
         @media (max-width: 992px) {
             .price-card.featured {
                 transform: none;
             }
         }
-
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
             }
-
+            
             nav ul {
                 margin-top: 20px;
                 flex-direction: column;
             }
-
+            
             nav ul li {
                 margin: 10px 0;
             }
-
+            
             .hero h1 {
                 font-size: 2.2rem;
             }
-
+            
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
                 top: 25px;
                 right: 20px;
             }
-
+            
             .mobile-menu {
                 display: none;
             }
-
+            
             .mobile-menu.active {
                 display: block;
             }
-
+            
             .website-links {
                 flex-direction: column;
             }
-
+            
             .website-link {
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
-
+            
             .footer-content {
                 flex-direction: column;
             }
-
+            
             .social-links {
                 margin-top: 20px;
             }
@@ -607,11 +598,9 @@
                     <i class="fas fa-gamepad"></i>
                     <span>Bainakarov</span>
                 </div>
-                
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
-                
                 <nav class="mobile-menu" id="mainNav">
                     <ul>
                         <li><a href="#home">Главная</a></li>
@@ -639,16 +628,29 @@
                 <h2>Услуги с примерами работ</h2>
                 <p>Мы предлагаем полный цикл разработки цифровых продуктов. Каждая услуга сопровождается примерами из нашего портфолио.</p>
             </div>
-            
             <div class="services-grid">
-                <!-- Разработка видеоигр с видео -->
+                <!-- Разработка видеоигр с видео слайдшоу -->
                 <div class="service-card">
                     <div class="service-media">
-                        <div class="video-container">
-                            <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
-                                <source src="./Игра.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
-                            </video>
+                        <div class="slider-container" id="gamesSlider">
+                            <div class="slide video-slide active">
+                                <video autoplay muted loop playsinline preload="metadata">
+                                    <source src="./Игра.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="slide video-slide">
+                                <video muted loop playsinline preload="metadata">
+                                    <source src="./Игра2.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="slide video-slide">
+                                <video muted loop playsinline preload="metadata">
+                                    <source src="./Игра3.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
                         </div>
                     </div>
                     <div class="service-content">
@@ -657,10 +659,10 @@
                         </div>
                         <h3>Разработка видеоигр</h3>
                         <p>Создание игр для PC, консолей и мобильных устройств. От инди-проектов до AAA-игр. Наше демо-видео показывает игровой процесс созданных нами проектов.</p>
-                        <p><small>Видео: Игра.mp4 - демонстрация игрового процесса</small></p>
+                        <p><small>Видео: Игра.mp4, Игра2.mp4, Игра3.mp4 - демонстрация игрового процесса</small></p>
                     </div>
                 </div>
-                
+
                 <!-- Визуализация интерьеров -->
                 <div class="service-card">
                     <div class="service-media">
@@ -688,15 +690,17 @@
                         <p><small>Изображения: Интерьер, Интерьер2, Интерьер3, Интерьер4 - примеры наших работ</small></p>
                     </div>
                 </div>
-                
+
                 <!-- Мобильные приложения -->
                 <div class="service-card">
                     <div class="service-media">
-                        <div class="video-container">
-                            <video class="auto-play-video" autoplay muted loop playsinline preload="metadata">
-                                <source src="./приложение.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
-                            </video>
+                        <div class="slider-container" id="appSlider">
+                            <div class="slide video-slide active">
+                                <video autoplay muted loop playsinline preload="metadata">
+                                    <source src="./приложение.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
                         </div>
                     </div>
                     <div class="service-content">
@@ -708,7 +712,7 @@
                         <p><small>Видео: приложение.mp4 - демонстрация мобильного приложения</small></p>
                     </div>
                 </div>
-                
+
                 <!-- Разработка сайтов -->
                 <div class="service-card">
                     <div class="service-media">
@@ -728,12 +732,10 @@
                         <h3>Разработка сайтов</h3>
                         <p>Создание современных, адаптивных и высокопроизводительных веб-сайтов и веб-приложений. Используем передовые технологии для достижения лучших результатов.</p>
                         <p><small>Изображения: Сайт.jpg и Сайт1.jpg - примеры наших работ</small></p>
-                        
                         <div class="projects-title">
                             <i class="fas fa-folder-open"></i>
                             Мои проекты:
                         </div>
-                        
                         <div class="website-links">
                             <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" class="website-link">
                                 <span>Alem-Komfort - Строительная компания</span>
@@ -755,8 +757,7 @@
                                 <span>Psychotests - Психологические тесты</span>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
-                            <a href="https://xsrt456rf.github.io/Kumarov-Arts.kz/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnKo0STpckXGvMHxeJTDn2eMtvRHqjQHGjoJEMRpSA7Z8WYi7ahzepVeTmPzo_aem_nrIyniTZUG_3SC_RwR9x1Q" 
-                               target="_blank" class="website-link">
+                            <a href="https://xsrt456rf.github.io/Kumarov-Arts.kz/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnKo0STpckXGvMHxeJTDn2eMtvRHqjQHGjoJEMRpSA7Z8WYi7ahzepVeTmPzo_aem_nrIyniTZUG_3SC_RwR9x1Q" target="_blank" class="website-link">
                                 <span>Kumarov-Arts.kz - Арт-портал</span>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
@@ -774,7 +775,6 @@
                 <h2>Прайс-лист</h2>
                 <p>Гибкие тарифы для проектов любого масштаба. Цены указаны за базовые пакеты услуг.</p>
             </div>
-            
             <div class="pricing-grid">
                 <div class="price-card">
                     <div class="price-header">
@@ -840,7 +840,6 @@
                     </div>
                 </div>
             </div>
-            
             <div style="text-align: center; margin-top: 50px;">
                 <p>Точная стоимость рассчитывается индивидуально после обсуждения деталей проекта. Все цены указаны в казахстанских тенге (₸).</p>
             </div>
@@ -854,7 +853,6 @@
             <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">
                 По всем вопросам сотрудничества и заказа услуг обращайтесь через Instagram
             </p>
-            
             <a href="https://www.instagram.com/baynakarov/" target="_blank" class="instagram-link">
                 <i class="fab fa-instagram"></i>
                 @baynakarov в Instagram
@@ -870,23 +868,21 @@
                     <i class="fas fa-gamepad"></i>
                     <span>Bainakarov</span>
                 </div>
-                
                 <div class="social-links">
                     <a href="https://www.instagram.com/baynakarov/" target="_blank" title="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
             </div>
-            
             <div class="copyright">
                 <p>&copy; Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов. Цены указаны в тенге (₸).</p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">
                     Примеры работ: 
                     <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Alem-Komfort</a> | 
                     <a href="https://xsrt456rf.github.io/QAZBIZ-ART/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">QAZBIZ-ART</a> | 
-                    <a href="https://xsrt456rf.github.io/clinickim.kz/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Clinickim.kz</a> |
+                    <a href="https://xsrt456rf.github.io/clinickim.kz/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Clinickim.kz</a> | 
                     <a href="https://xsrt456rf.github.io/Med.Testi/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Med.Testi</a> | 
-                    <a href="http://xsrt456rf.github.io/Psychotests/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Psychotests</a> |
+                    <a href="http://xsrt456rf.github.io/Psychotests/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Psychotests</a> | 
                     <a href="https://xsrt456rf.github.io/Kumarov-Arts.kz/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Kumarov-Arts.kz</a>
                 </p>
             </div>
@@ -900,16 +896,15 @@
         
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : 
+                '<i class="fas fa-bars"></i>';
         });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if(targetId === '#') return;
                 
@@ -928,6 +923,75 @@
             });
         });
         
+        // Слайдшоу для игровых видео - последовательное воспроизведение
+        function startGamesSlider() {
+            const slider = document.getElementById('gamesSlider');
+            const slides = slider.querySelectorAll('.slide');
+            const videos = slider.querySelectorAll('video');
+            let currentIndex = 0;
+            
+            // Настраиваем все видео
+            videos.forEach((video, index) => {
+                video.loop = false;
+                video.muted = true;
+                video.preload = "auto";
+                
+                // Обработчик окончания видео
+                video.addEventListener('ended', () => {
+                    nextVideo();
+                });
+                
+                // Обработчик ошибок
+                video.addEventListener('error', () => {
+                    console.error(`Ошибка загрузки видео ${index + 1}`);
+                    nextVideo();
+                });
+            });
+            
+            // Функция переключения на следующее видео
+            function nextVideo() {
+                // Скрываем текущее видео
+                slides[currentIndex].classList.remove('active');
+                videos[currentIndex].pause();
+                
+                // Переходим к следующему видео
+                currentIndex = (currentIndex + 1) % slides.length;
+                
+                // Показываем следующее видео
+                slides[currentIndex].classList.add('active');
+                
+                // Сбрасываем время и воспроизводим следующее видео
+                const nextVideo = videos[currentIndex];
+                nextVideo.currentTime = 0;
+                
+                // Пытаемся воспроизвести видео
+                const playPromise = nextVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Автовоспроизведение заблокировано");
+                        // Если автовоспроизведение заблокировано, показываем controls
+                        nextVideo.controls = true;
+                    });
+                }
+            }
+            
+            // Начинаем воспроизведение первого видео
+            if (videos.length > 0) {
+                const playPromise = videos[0].play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Автовоспроизведение первого видео заблокировано");
+                        videos[0].controls = true;
+                    });
+                }
+            }
+            
+            // Переключаем видео при клике
+            slider.addEventListener('click', () => {
+                nextVideo();
+            });
+        }
+        
         // Автослайдшоу для интерьеров
         function startInteriorSlider() {
             const slides = document.querySelectorAll('#interiorSlider .slide');
@@ -937,23 +1001,25 @@
                 slides[currentSlide].classList.remove('active');
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add('active');
-            }, 3000); // 3 секунды
+            }, 4000);
         }
         
         // Автослайдшоу для сайтов
         function startSitesSlider() {
             const slides = document.querySelectorAll('#sitesSlider .slide');
-            let currentSlide = 0;
-            
-            setInterval(() => {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }, 3000); // 3 секунды
+            if (slides.length > 1) {
+                let currentSlide = 0;
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 4000);
+            }
         }
         
-        // Запуск слайдшоу при загрузке
-        window.addEventListener('load', () => {
+        // Запускаем все слайдеры после загрузки страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            startGamesSlider();
             startInteriorSlider();
             startSitesSlider();
         });
