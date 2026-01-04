@@ -221,6 +221,9 @@
             color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .service-content p {
@@ -233,6 +236,18 @@
             font-size: 2.5rem;
             color: var(--secondary);
             margin-bottom: 15px;
+        }
+        
+        /* Ценник */
+        .price-tag {
+            background: linear-gradient(135deg, var(--secondary), #e55a2b);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.3);
         }
         
         /* Кнопки для ссылок на сайты */
@@ -315,133 +330,6 @@
         
         .projects-title i {
             color: var(--secondary);
-        }
-        
-        /* Pricing Section */
-        .pricing {
-            padding: 80px 0;
-            background-color: #f5f7ff;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .price-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s;
-            position: relative;
-        }
-        
-        .price-card.featured {
-            transform: scale(1.05);
-            border: 2px solid var(--secondary);
-        }
-        
-        .price-header {
-            background: var(--primary);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-        
-        .price-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-        
-        .price-currency {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .price-period {
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .price-badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--secondary);
-            color: white;
-            padding: 8px 30px;
-            transform: rotate(45deg);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .price-features {
-            padding: 30px;
-        }
-        
-        .price-features ul {
-            list-style: none;
-        }
-        
-        .price-features ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-        }
-        
-        .price-features ul li i {
-            color: var(--secondary);
-            margin-right: 10px;
-        }
-        
-        .price-features ul li.disabled {
-            color: #ccc;
-        }
-        
-        .price-features ul li.disabled i {
-            color: #ccc;
-        }
-        
-        .price-button {
-            text-align: center;
-            padding: 0 30px 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 14px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .btn:hover {
-            background: #e55a2b;
-            transform: translateY(-3px);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: white;
         }
         
         /* Contact Section */
@@ -530,12 +418,6 @@
         }
         
         /* Responsive */
-        @media (max-width: 992px) {
-            .price-card.featured {
-                transform: none;
-            }
-        }
-        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -586,6 +468,16 @@
             .social-links {
                 margin-top: 20px;
             }
+            
+            .service-content h3 {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .price-tag {
+                align-self: flex-start;
+            }
         }
     </style>
 </head>
@@ -604,8 +496,7 @@
                 <nav class="mobile-menu" id="mainNav">
                     <ul>
                         <li><a href="#home">Главная</a></li>
-                        <li><a href="#services-portfolio">Услуги с портфолио</a></li>
-                        <li><a href="#pricing">Прайс-лист</a></li>
+                        <li><a href="#services-portfolio">Портфолио и услуги</a></li>
                         <li><a href="#contact">Контакты</a></li>
                     </ul>
                 </nav>
@@ -618,15 +509,18 @@
         <div class="container">
             <h1>Bainakarov: Воплощаем цифровые идеи в жизнь</h1>
             <p>Специализируемся на создании видеоигр, 3D визуализации интерьеров, разработке мобильных приложений и веб-сайтов. Превращаем ваши концепции в качественные цифровые продукты.</p>
+            <p style="font-style: italic; color: var(--primary); margin-top: 20px;">
+                💰 Цены указаны за базовые проекты. Точная стоимость рассчитывается индивидуально.
+            </p>
         </div>
     </section>
 
-    <!-- Услуги с портфолио -->
+    <!-- Услуги с портфолио и ценами -->
     <section class="services-portfolio" id="services-portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>Услуги с примерами работ</h2>
-                <p>Мы предлагаем полный цикл разработки цифровых продуктов. Каждая услуга сопровождается примерами из нашего портфолио.</p>
+                <h2>Портфолио и стоимость услуг</h2>
+                <p>Примеры наших работ с ориентировочными ценами. Каждый проект уникален, окончательная стоимость обсуждается индивидуально.</p>
             </div>
             <div class="services-grid">
                 <!-- Разработка видеоигр с видео слайдшоу -->
@@ -657,8 +551,17 @@
                         <div class="service-icon">
                             <i class="fas fa-gamepad"></i>
                         </div>
-                        <h3>Разработка видеоигр</h3>
-                        <p>Создание игр для PC, консолей и мобильных устройств. От инди-проектов до AAA-игр. Наше демо-видео показывает игровой процесс созданных нами проектов.</p>
+                        <h3>
+                            Разработка видеоигр
+                            <span class="price-tag">от 750 000 ₸</span>
+                        </h3>
+                        <p>Создание игр для PC, консолей и мобильных устройств. От инди-проектов до AAA-игр. Включает: концепцию, дизайн, программирование, тестирование.</p>
+                        <p><small><strong>Примерная стоимость:</strong></small></p>
+                        <ul style="color: var(--gray); font-size: 0.9rem; padding-left: 20px; margin-bottom: 15px;">
+                            <li>Мобильная игра: от 750 000 ₸</li>
+                            <li>Инди-игра для PC: от 1 500 000 ₸</li>
+                            <li>Коммерческий проект: от 3 000 000 ₸</li>
+                        </ul>
                         <p><small>Видео: Игра.mp4, Игра2.mp4, Игра3.mp4 - демонстрация игрового процесса</small></p>
                     </div>
                 </div>
@@ -685,8 +588,18 @@
                         <div class="service-icon">
                             <i class="fas fa-couch"></i>
                         </div>
-                        <h3>3D визуализация интерьеров</h3>
+                        <h3>
+                            3D визуализация интерьеров
+                            <span class="price-tag">от 35 000 ₸</span>
+                        </h3>
                         <p>Фотореалистичная 3D визуализация интерьеров для дизайнеров, архитекторов и застройщиков. Создаем реалистичные изображения будущих помещений.</p>
+                        <p><small><strong>Примерная стоимость:</strong></small></p>
+                        <ul style="color: var(--gray); font-size: 0.9rem; padding-left: 20px; margin-bottom: 15px;">
+                            <li>Одна визуализация: от 35 000 ₸</li>
+                            <li>Пакет из 3 визуализаций: от 90 000 ₸</li>
+                            <li>Полный проект (5+ визуализаций): от 150 000 ₸</li>
+                            <li>3D-тур: от 200 000 ₸</li>
+                        </ul>
                         <p><small>Изображения: Интерьер, Интерьер2, Интерьер3, Интерьер4 - примеры наших работ</small></p>
                     </div>
                 </div>
@@ -707,8 +620,18 @@
                         <div class="service-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h3>Мобильные приложения</h3>
+                        <h3>
+                            Мобильные приложения
+                            <span class="price-tag">от 450 000 ₸</span>
+                        </h3>
                         <p>Разработка iOS и Android приложений с современным дизайном и высокой производительностью. От концепции до публикации в магазинах приложений.</p>
+                        <p><small><strong>Примерная стоимость:</strong></small></p>
+                        <ul style="color: var(--gray); font-size: 0.9rem; padding-left: 20px; margin-bottom: 15px;">
+                            <li>Простое приложение: от 450 000 ₸</li>
+                            <li>Приложение со сложной логикой: от 850 000 ₸</li>
+                            <li>Кроссплатформенное: от 1 200 000 ₸</li>
+                            <li>Поддержка (в месяц): от 25 000 ₸</li>
+                        </ul>
                         <p><small>Видео: приложение.mp4 - демонстрация мобильного приложения</small></p>
                     </div>
                 </div>
@@ -729,8 +652,19 @@
                         <div class="service-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3>Разработка сайтов</h3>
+                        <h3>
+                            Разработка сайтов
+                            <span class="price-tag">от 150 000 ₸</span>
+                        </h3>
                         <p>Создание современных, адаптивных и высокопроизводительных веб-сайтов и веб-приложений. Используем передовые технологии для достижения лучших результатов.</p>
+                        <p><small><strong>Примерная стоимость:</strong></small></p>
+                        <ul style="color: var(--gray); font-size: 0.9rem; padding-left: 20px; margin-bottom: 15px;">
+                            <li>Лендинг: от 150 000 ₸</li>
+                            <li>Корпоративный сайт: от 250 000 ₸</li>
+                            <li>Интернет-магазин: от 400 000 ₸</li>
+                            <li>Веб-приложение: от 600 000 ₸</li>
+                            <li>Хостинг+поддержка: от 15 000 ₸/мес</li>
+                        </ul>
                         <p><small>Изображения: Сайт.jpg и Сайт1.jpg - примеры наших работ</small></p>
                         <div class="projects-title">
                             <i class="fas fa-folder-open"></i>
@@ -765,83 +699,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Прайс-лист</h2>
-                <p>Гибкие тарифы для проектов любого масштаба. Цены указаны за базовые пакеты услуг.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Стартовый</h3>
-                        <div class="price">от 250 000 <span class="price-currency">₸</span></div>
-                        <div class="price-period">за проект</div>
-                    </div>
-                    <div class="price-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> Концепция и планирование</li>
-                            <li><i class="fas fa-check"></i> Базовый дизайн</li>
-                            <li><i class="fas fa-check"></i> Прототипирование</li>
-                            <li><i class="fas fa-check"></i> Тестирование на 1 платформе</li>
-                            <li class="disabled"><i class="fas fa-times"></i> Мультиплатформенность</li>
-                            <li class="disabled"><i class="fas fa-times"></i> Продвинутая графика</li>
-                        </ul>
-                    </div>
-                    <div class="price-button">
-                        <a href="#contact" class="btn btn-outline">Выбрать тариф</a>
-                    </div>
-                </div>
-                
-                <div class="price-card featured">
-                    <div class="price-badge">Популярный</div>
-                    <div class="price-header">
-                        <h3>Профессиональный</h3>
-                        <div class="price">от 750 000 <span class="price-currency">₸</span></div>
-                        <div class="price-period">за проект</div>
-                    </div>
-                    <div class="price-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> Полный цикл разработки</li>
-                            <li><i class="fas fa-check"></i> Уникальный дизайн</li>
-                            <li><i class="fas fa-check"></i> Адаптация под 2 платформы</li>
-                            <li><i class="fas fa-check"></i> Тестирование и отладка</li>
-                            <li><i class="fas fa-check"></i> Базовая анимация и эффекты</li>
-                            <li><i class="fas fa-check"></i> Техническая поддержка 3 месяца</li>
-                        </ul>
-                    </div>
-                    <div class="price-button">
-                        <a href="#contact" class="btn">Выбрать тариф</a>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Премиум</h3>
-                        <div class="price">от 1 500 000 <span class="price-currency">₸</span></div>
-                        <div class="price-period">за проект</div>
-                    </div>
-                    <div class="price-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> Полный цикл разработки</li>
-                            <li><i class="fas fa-check"></i> Эксклюзивный дизайн</li>
-                            <li><i class="fas fa-check"></i> Мультиплатформенность</li>
-                            <li><i class="fas fa-check"></i> Продвинутая графика и анимация</li>
-                            <li><i class="fas fa-check"></i> Маркетинговые материалы</li>
-                            <li><i class="fas fa-check"></i> Техническая поддержка 12 месяцев</li>
-                        </ul>
-                    </div>
-                    <div class="price-button">
-                        <a href="#contact" class="btn btn-outline">Выбрать тариф</a>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 50px;">
-                <p>Точная стоимость рассчитывается индивидуально после обсуждения деталей проекта. Все цены указаны в казахстанских тенге (₸).</p>
+            
+            <div style="text-align: center; margin-top: 60px; padding: 30px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; border-left: 5px solid var(--secondary);">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">💰 Гибкая система оплаты</h3>
+                <p style="color: var(--gray); max-width: 800px; margin: 0 auto;">
+                    <strong>Цены указаны в казахстанских тенге (₸).</strong> Окончательная стоимость зависит от сложности проекта, сроков реализации и дополнительных требований. 
+                    Возможна оплата частями по этапам работы. Бесплатная консультация и оценка проекта.
+                </p>
+                <p style="margin-top: 15px; font-style: italic; color: var(--primary);">
+                    ⏱️ Сроки разработки: от 2 недель для простых проектов до 6+ месяцев для комплексных решений.
+                </p>
             </div>
         </div>
     </section>
@@ -849,14 +716,18 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h3>Свяжитесь со мной</h3>
+            <h3>Свяжитесь для обсуждения проекта</h3>
             <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">
-                По всем вопросам сотрудничества и заказа услуг обращайтесь через Instagram
+                Обсудим ваш проект, предоставим точную оценку стоимости и сроков. Отвечаю оперативно в рабочее время.
             </p>
             <a href="https://www.instagram.com/baynakarov/" target="_blank" class="instagram-link">
                 <i class="fab fa-instagram"></i>
-                @baynakarov в Instagram
+                Написать в Instagram @baynakarov
             </a>
+            <div style="margin-top: 40px; color: rgba(255, 255, 255, 0.8);">
+                <p><i class="fas fa-clock"></i> Время ответа: обычно в течение 1-2 часов в рабочее время</p>
+                <p><i class="fas fa-comment-dollar"></i> Бесплатная консультация и оценка проекта</p>
+            </div>
         </div>
     </section>
 
@@ -875,7 +746,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов. Цены указаны в тенге (₸).</p>
+                <p>&copy; Bainakarov. Разработка видеоигр, визуализация интерьеров, создание мобильных приложений и сайтов.</p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">
                     Примеры работ: 
                     <a href="https://xsrt456rf.github.io/Alem-Komfort/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Alem-Komfort</a> | 
@@ -884,6 +755,9 @@
                     <a href="https://xsrt456rf.github.io/Med.Testi/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Med.Testi</a> | 
                     <a href="http://xsrt456rf.github.io/Psychotests/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Psychotests</a> | 
                     <a href="https://xsrt456rf.github.io/Kumarov-Arts.kz/" target="_blank" style="color: rgba(255, 255, 255, 0.9);">Kumarov-Arts.kz</a>
+                </p>
+                <p style="margin-top: 15px; color: rgba(255, 255, 255, 0.6); font-size: 0.8rem;">
+                    Цены указаны в тенге (₸) и являются ориентировочными. Окончательная стоимость рассчитывается индивидуально.
                 </p>
             </div>
         </div>
