@@ -4,7 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bainakarov | Создание видеоигр, визуализация интерьеров, приложения и сайты</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Акупрессурные точки</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Акупрессурные точки</h1>
+    <p>Информационный сайт по акупрессурным точкам. Кликайте по картинке для просмотра в полном размере.</p>
+  </header>
+
+  <div class="grid">
+    <div class="point"><h3 class="code">LU10 - убирает гипоксию, простуду</h3><img src="LU10.png" alt="LU10"></div>
+    <div class="point"><h3 class="code">LIV-2</h3><img src="LIV-2.jpg" alt="LIV-2"></div>
+    <div class="point"><h3 class="code">LI4- снижает стресс, воздействует на кишечник</h3><img src="LI4.jpeg" alt="LI4"></div>
+    <div class="point"><h3 class="code">EX-UE7</h3><img src="EX-UE7.jpg" alt="EX-UE7"></div>
+    <div class="point"><h3 class="code">CV6</h3><img src="CV6.jpg" alt="CV6"></div>
+    <div class="point"><h3 class="code">LU11-убирает гипоксию, простуду </h3><img src="LU11.png" alt="LU11"></div>
+    <div class="point"><h3 class="code">LV1</h3><img src="LIV1.jpg" alt="LV1"></div>
+    <div class="point"><h3 class="code">ST-36</h3><img src="ST-36.png" alt="ST-36"></div>
+    <div class="point"><h3 class="code">LI10,LI11</h3><img src="LI10,LI11.jpg" alt="LI10,LI11"></div>
+    <div class="point"><h3 class="code">LU5</h3><img src="LU5.jpg" alt="LU5"></div>
+    <div class="point"><h3 class="code">SI-8 - убирает газообразование</h3><img src="SI-8.jpg" alt="SI-8"></div>
+    <div class="point"><h3 class="code">LI20</h3><img src="LI20.png" alt="LI20"></div>
+    <div class="point"><h3 class="code">DU26</h3><img src="DU26.png" alt="DU26"></div>
+    <div class="point"><h3 class="code">SP6</h3><img src="SP6.jpg" alt="SP6"></div>
+    <div class="point"><h3 class="code">VB34</h3><img src="VB34.jpg" alt="VB34"></div>
+    <div class="point"><h3 class="code">GV20</h3><img src="GV20.jpg" alt="GV20"></div>
+    <div class="point"><h3 class="code">K27</h3><img src="K27.jpg" alt="K27"></div>
+    <div class="point"><h3 class="code">CV17</h3><img src="CV17.jpg" alt="CV17"></div>
+    <div class="point"><h3 class="code">P6 - убирает тошноту</h3><img src="P 6.png" alt="CV17"></div>
+    <div class="point"><h3 class="code">ST 1</h3><img src="ST 1.jpg" alt="ST 1"></div>
+    <div class="point"><h3 class="code">ST 25</h3><img src="ST 25.jpg" alt="ST 25"></div>
+    <div class="point"><h3 class="code">SP 10 - убирает анемию </h3><img src="SP10.jpg" alt="ST 25"></div>
+    <div class="point"><h3 class="code">Kidney 3 - снимает стресс </h3><img src="Kidney 3.jpg" alt="Kidney 3"></div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Full screen">
+</div>
+
+<script>
+const pointsImgs = document.querySelectorAll('.point img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+pointsImgs.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src; // оригинальные файлы
+    lightboxImg.alt = img.alt;
+  });
+});
+
+function closeLightbox() {
+  lightbox.style.display = 'none';
+}
+</script>
+
+<footer>
+  © 2026 Акупрессурные точки — учебно-информационный проект<br>
+  Все точки приведены для информационных целей, не являются медицинской рекомендацией.
+</footer>
+
+</body>
+</html>
+/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -242,3 +315,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
